@@ -1,0 +1,38 @@
+#date1{
+	position: relative;
+	margin-right: 6px;
+}
+#date2{
+	position: relative;
+	/*margin-right: 6px;*/
+}
+
+
+button#butone:focus
+{
+    background:rgb(57, 175, 209);
+    display: inline-block;
+    overflow: visible;
+	overflow-wrap: break-word;
+	overflow-x: visible;
+	overflow-y: visible;
+}
+
+.selected{
+    background-color:red;
+    color:white;
+
+}
+
+/*button{
+
+ text-decoration: none;
+  display: block;
+  text-transform: capitalize;
+  background-color: pink;
+  color: #fff;
+}
+
+button.active {
+  background-color: cornflowerblue;
+}*/

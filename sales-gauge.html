@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Hyper - Responsive Bootstrap 4 Admin Dashboard</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
+        <meta content="Coderthemes" name="author" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <!-- App favicon -->
+        <link rel="shortcut icon" href="assets/images/favicon.ico">
+
+        <!-- third party css -->
+        <link href="assets/css/vendor/fullcalendar.min.css" rel="stylesheet" type="text/css" />
+        <!-- third party css end -->
+
+        <!-- App css -->
+        <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+        <link href="assets/css/app.min.css" rel="stylesheet" type="text/css" />
+        <style>
+    div,canvas {
+  border: 1px solid white;
+ 
+  /*display: inline-block;*/
+}
+body {
+  background:white;
+}
+</style>
+
+    </head>
+
+    <body>
+
+        <!-- Begin page -->
+        <div class="wrapper">
+
+            <!-- ========== Left Sidebar Start ========== -->
+            <div class="left-side-menu">
+
+                <div class="slimscroll-menu">
+
+                    <!-- LOGO -->
+                    <a href="index.html" class="logo text-center">
+                        <span class="logo-lg">
+                            <img src="assets/images/whitegen.png" alt="logo" height="25" width="180">
+                        </span>
+                        <span class="logo-sm">
+                            <img src="assets/images/logo_sm.png" alt="" height="16">
+                        </span>
+                    </a>
+
+                    <!--- Sidemenu -->
+                    <ul class="metismenu side-nav">
+
+                        <li class="side-nav-title side-nav-item">Navigation</li>
+
+                        <li class="side-nav-item">
+                            <a href="index.html" class="side-nav-link">
+                                <i class="dripicons-meter"></i>
+                                <span class="badge badge-success float-right">7</span>
+                                <span> Dashboard </span>
+                            </a>
+                        </li>
+
+                        <li class="side-nav-item">
+                            <a href="javascript: void(0);" class="side-nav-link">
+                                <i class="dripicons-view-apps"></i>
+                                <span> Sales Panel </span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                            <ul class="side-nav-second-level" aria-expanded="false">
+                                <li>
+                                    <a href="sales-gauge.html">Gauge</a>
+                                </li>
+                                
+                                
+                            </ul>
+                        </li>
+            
+                        
+                            </ul>
+                        </li>
+
+                        
+
+                       
+
+                        
+
+                        
+
+                       
+
+                       
+            
+                    </ul>
+
+                    <!-- Help Box -->
+                    <!-- end Help Box -->
+                    <!-- End Sidebar -->
+
+
+                </div>
+                <!-- Sidebar -left -->
+
+            </div>
+            <!-- Left Sidebar End -->
+
+            <!-- ============================================================== -->
+            <!-- Start Page Content here -->
+            <!-- ============================================================== -->
+
+            <div class="content-page">
+                <div class="content">
+
+                    <!-- Topbar Start -->
+                    <div class="navbar-custom">
+                        <ul class="list-unstyled topbar-right-menu float-right mb-0">
+
+                            <li class="dropdown notification-list">
+                                <a class="nav-link dropdown-toggle arrow-none" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                                    <i class="dripicons-bell noti-icon"></i>
+                                    <span class="noti-icon-badge"></span>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated dropdown-lg">
+
+                                    <!-- item-->
+                                </div>
+                           
+                            </li>
+
+                            <li class="dropdown notification-list">
+                                <a class="nav-link dropdown-toggle nav-user arrow-none mr-0" data-toggle="dropdown" href="#" role="button" aria-haspopup="false"
+                                    aria-expanded="false">
+                                    <span class="account-user-avatar"> 
+                                        <img src="assets/images/users/avatar-1.jpg" alt="user-image" class="rounded-circle">
+                                    </span>
+                                    <span>
+                                        <span class="account-user-name">Sid</span>
+                                        <span class="account-position">Founder</span>
+                                    </span>
+                                </a>
+                            </li>
+
+                        </ul>
+                        <button class="button-menu-mobile open-left disable-btn">
+                            <i class="mdi mdi-menu"></i>
+                        </button>
+                    </div>
+                    <!-- end Topbar -->
+
+                    <!-- Start Content-->
+                    <div class="container-fluid">
+                        
+                        <!-- start page title -->
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="page-title-box">
+                                    <div class="page-title-right">
+                                        <ol class="breadcrumb m-0">
+                                            <li class="breadcrumb-item"><a href="javascript: void(0);">Hyper</a></li>
+                                            <li class="breadcrumb-item"><a href="javascript: void(0);">Sales</a></li>
+                                            <li class="breadcrumb-item active">Gauge</li>
+                                        </ol>
+                                    </div>
+                                    <h4 class="page-title">Sales Gauge</h4>
+                                </div>
+                            </div>
+                        </div>     
+                        <!-- end page title --> 
+
+                        <div class="row">
+                            <div class="panel">
+                            <div  class="col-12">
+                           
+                                <div class="panel">
+                                    <canvas style="margin-right: 150px;" id="canvas" width=450 height=280 ></canvas>
+                                    <canvas style="margin-left: 100px;" id="canvas2" width=450 height=280 ></canvas>
+                                </div>
+                                <div style="margin-left:400px;" class="btn-group">
+                                   <!--  <button class="btn  btn-outline-info" id="generic">Sales</button>
+                                    <button class="btn  btn-outline-info" id="ethical">Gereric %</button>
+                                    <button class = "btn  btn-outline-info" id="other">Purchase</button> -->
+                                </div>
+                                <br/>
+                                <br/>
+                            <div class="col-xl-12">
+
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <!--Total Sales Text Box-->
+                                        <div id="boxx1" class="card widget-flat">
+                                            <div class="card-body" onmouseover="changeText2('Average Sales')" onmouseout="changeback2('Total Sales')">
+                                                <div class="float-right">
+                                                    <i class="mdi mdi-account-multiple widget-icon"></i>
+                                                </div>
+                                                <h5 id="textbox2" class="text-muted font-weight-normal mt-0" title="totalsales">Pending HD</h5>
+                                                <h3 id="tsales" class="mt-3 mb-3"></h3>
+                                            </div>
+                                        </div>
+                                        <!--On Hover Average Sales Text Box-->
+                                    </div> <!-- end col-->
+
+                                    <div class="col-lg-6">
+                                        <!-- Total Purchase TextBox-->
+                                        <div id="boxx2" class="card widget-flat">
+                                            <div class="card-body" onmouseover="changeText('Average Purchase')" onmouseout="changeback('Total Purchase')">
+                                                <div class="float-right">
+                                                    <i class="mdi mdi-cart-plus widget-icon"></i>
+                                                </div>
+                                            <h5 id="textbox1" class="text-muted font-weight-normal mt-0" title="averagesales" >Time Spent</h5>
+                                                <h3 id="Totalpurbox" class="mt-3 mb-3"></h3>  
+                                            </div>
+                                        </div>
+                                        <!--On Hover Total Purchase TextBox-->
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <!--Ethical Percentage Text Box -->
+                                        <div class="card widget-flat">
+                                            <div class="card-body">
+                                                <div class="float-right">
+                                                    <i class="mdi mdi-currency-usd widget-icon"></i>
+                                                </div>
+                                                <h5 id="text2" class="text-muted font-weight-normal mt-0" title="genericsales">Pending Request</h5>
+                                                <h3 id="ethic" class="mt-3 mb-3"></h3>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-6">
+                                        <!--Generic Percentage TextBox -->
+                                        <div class="card widget-flat">
+                                            <div class="card-body">
+                                                <div class="float-right">
+                                                    <i class="mdi mdi-pulse widget-icon"></i>
+                                              </div>
+                                        </    </div>
+                                                <h5 class="text-muted font-weight-normal mt-0" title="Growth">Conversion</h5>
+                                                <h3 id="generic" class="mt-3 mb-3"></h3>
+                                    
+                                </div>
+
+                            </div>
+                            
+
+                           <!-- end card body-->
+                            </div> <!-- end card -->
+
+                                <!-- Add New Event MODAL -->
+                               
+                                <!-- end modal-->
+
+                                <!-- Modal Add Category -->
+                               
+                                <!-- end modal-->
+                                 </div>
+                            </div>
+                        </div>
+                            <!-- end col-12 -->
+                        </div> <!-- end row -->
+                        
+                    </div> <!-- container -->
+
+                </div> <!-- content -->
+
+                <!-- Footer Start -->
+                <footer class="footer">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-6">
+                                2018 © Hyper - Coderthemes.com
+                            </div>
+                            <div class="col-md-6">
+                                <div class="text-md-right footer-links d-none d-md-block">
+                                    <a href="javascript: void(0);">About</a>
+                                    <a href="javascript: void(0);">Support</a>
+                                    <a href="javascript: void(0);">Contact Us</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+                <!-- end Footer -->
+
+            </div>
+
+            <!-- ============================================================== -->
+            <!-- End Page content -->
+            <!-- ============================================================== -->
+
+
+        </div>
+        <!-- END wrapper -->
+
+
+        <!-- Right Sidebar -->
+       
+        <!-- /Right-bar -->
+
+
+        <!-- App js -->
+        <script src="assets/js/gauge.min.js"></script>
+        <script async src="gauge.min.js" onload="initGauge()"></script>
+        <script src="assets/js/app.min.js"></script>
+
+        <!-- third party js -->
+        <script src="assets/js/vendor/jquery-ui.min.js"></script>
+        <script src="assets/js/vendor/fullcalendar.min.js"></script>
+        <!-- third party js ends -->
+
+        <!-- demo app -->
+        <script src="assets/js/pages/demo.calendar.js"></script>
+        
+        <!-- end demo js-->
+
+    </body>
+    <script>
+   fetch("http://127.0.0.1:3000/gauge/generic")
+   .then(res => res.json())
+   .then(function(result){
+        console.log(result[0].genericgauge);
+       
+var gauge = new Gauge(cont.get(0));
+var opts = {
+    angle: 0,
+    lineWidth: 0.25,
+    radiusScale: 1,
+    pointer: {
+      length: 0.50,
+      strokeWidth: 0.02,
+      color: 'rgba(108,117,125,1)'
+    },
+    staticLabels:{
+      font:"20px  sans-serif",
+      labels:[0,1800000,10000000],
+      fractionDigits:0
+    },
+    staticZones: [
+       {strokeStyle: "rgba(255,0,0,0.85)", min: 0, max: 450000},
+       {strokeStyle: "rgba(255,0,0,0.75)", min: 450001, max: 900000},
+       {strokeStyle: "rgba(255,0,0,0.5)", min: 900001, max: 1350000},
+       {strokeStyle: "rgba(255,0,0,0.3)", min: 1350001, max: 1800000},
+
+
+
+
+       {strokeStyle: "rgba(10,207,151,0.05)", min: 1800001, max: 1845000},
+       {strokeStyle: "rgba(10,207,151,0.1)", min: 1845001, max: 1890000},
+       {strokeStyle: "rgba(10,207,151,0.15)", min: 1890001, max: 2340000}, 
+       {strokeStyle: "rgba(10,207,151,0.20)", min: 2340001, max: 2790000},
+       {strokeStyle: "rgba(10,207,151,0.25)", min: 2790001, max: 3240000},
+       {strokeStyle: "rgba(10,207,151,0.3)", min: 3240001, max: 3690000}, 
+       {strokeStyle: "rgba(10,207,151,0.35)", min: 3690001, max: 4140000},
+       {strokeStyle: "rgba(10,207,151,0.4)", min: 4140001, max: 4590000},
+       {strokeStyle: "rgba(10,207,151,0.45)", min: 4590001, max: 5040000}, 
+       {strokeStyle: "rgba(10,207,151,0.5)", min: 5040001, max: 5490000},
+       {strokeStyle: "rgba(10,207,151,0.55)", min: 5490001, max: 5940000},
+       {strokeStyle: "rgba(10,207,151,0.6)", min: 5940001, max: 6390000},
+       {strokeStyle: "rgba(10,207,151,0.65)", min: 6390001, max: 6840000},
+       {strokeStyle: "rgba(10,207,151,0.7)", min: 6840001, max: 7290000},
+       {strokeStyle: "rgba(10,207,151,0.72)", min: 7290001, max: 7740000}, 
+       {strokeStyle: "rgba(10,207,151,0.75)", min: 7740001, max: 8190000},
+       {strokeStyle: "rgba(10,207,151,0.82)", min: 8190001, max: 8640000},
+       {strokeStyle: "rgba(10,207,151,0.92)", min: 8640001, max: 9090000},
+       {strokeStyle: "rgba(10,207,151,1)", min: 9090001, max: 10000000} 
+                
+    ]
+};
+gauge.setOptions(opts);
+        var cont = $('#canvas');
+gauge.maxValue = 10000000;
+gauge.animationSpeed = 10;
+gauge.set(result[0].genericgauge);
+  })
+
+   fetch("http://127.0.0.1:3000/gauge/ethical")
+   .then(res => res.json())
+   .then(function(result){
+        console.log(result[0].ethicalgauge);
+       
+        var cont = $('#canvas');
+var gauge = new Gauge(cont.get(0));
+var opts = {
+    angle: 0,
+    lineWidth: 0.25,
+    radiusScale: 1,
+    pointer: {
+      length: 0.50,
+      strokeWidth: 0.02,
+      color: 'rgba(108,117,125,1)'
+    },
+    staticLabels:{
+      font:"20px  sans-serif",
+      labels:[0,1800000,10000000],
+      fractionDigits:0
+    },
+    staticZones: [
+       {strokeStyle: "rgba(255,0,0,0.85)", min: 0, max: 450000},
+       {strokeStyle: "rgba(255,0,0,0.75)", min: 450001, max: 900000},
+       {strokeStyle: "rgba(255,0,0,0.5)", min: 900001, max: 1350000},
+       {strokeStyle: "rgba(255,0,0,0.3)", min: 1350001, max: 1800000},
+
+
+
+
+       {strokeStyle: "rgba(10,207,151,0.05)", min: 1800001, max: 1845000},
+       {strokeStyle: "rgba(10,207,151,0.1)", min: 1845001, max: 1890000},
+       {strokeStyle: "rgba(10,207,151,0.15)", min: 1890001, max: 2340000}, 
+       {strokeStyle: "rgba(10,207,151,0.20)", min: 2340001, max: 2790000},
+       {strokeStyle: "rgba(10,207,151,0.25)", min: 2790001, max: 3240000},
+       {strokeStyle: "rgba(10,207,151,0.3)", min: 3240001, max: 3690000}, 
+       {strokeStyle: "rgba(10,207,151,0.35)", min: 3690001, max: 4140000},
+       {strokeStyle: "rgba(10,207,151,0.4)", min: 4140001, max: 4590000},
+       {strokeStyle: "rgba(10,207,151,0.45)", min: 4590001, max: 5040000}, 
+       {strokeStyle: "rgba(10,207,151,0.5)", min: 5040001, max: 5490000},
+       {strokeStyle: "rgba(10,207,151,0.55)", min: 5490001, max: 5940000},
+       {strokeStyle: "rgba(10,207,151,0.6)", min: 5940001, max: 6390000},
+       {strokeStyle: "rgba(10,207,151,0.65)", min: 6390001, max: 6840000},
+       {strokeStyle: "rgba(10,207,151,0.7)", min: 6840001, max: 7290000},
+       {strokeStyle: "rgba(10,207,151,0.72)", min: 7290001, max: 7740000}, 
+       {strokeStyle: "rgba(10,207,151,0.75)", min: 7740001, max: 8190000},
+       {strokeStyle: "rgba(10,207,151,0.82)", min: 8190001, max: 8640000},
+       {strokeStyle: "rgba(10,207,151,0.92)", min: 8640001, max: 9090000},
+       {strokeStyle: "rgba(10,207,151,1)", min: 9090001, max: 10000000} 
+                
+    ]
+};
+gauge.setOptions(opts);
+gauge.maxValue = 100;
+gauge.animationSpeed = 10;
+gauge.set(result[0].ethicalgauge);
+  })
+
+
+
+
+    
+
+
+   fetch("http://127.0.0.1:3000/gauge/other")
+   .then(res => res.json())
+   .then(function(result){
+        console.log(result[0].othergauge);
+       
+        var cont = $('#canvas');
+var gauge = new Gauge(cont.get(0));
+var opts = {
+    angle: 0,
+    lineWidth: 0.25,
+    radiusScale: 1,
+    pointer: {
+      length: 0.50,
+      strokeWidth: 0.02,
+      color: 'rgba(108,117,125,1)'
+    },
+    staticLabels:{
+      font:"20px  sans-serif",
+      labels:[0,1800000,10000000],
+      fractionDigits:0
+    },
+    staticZones: [
+       {strokeStyle: "rgba(255,0,0,0.85)", min: 0, max: 450000},
+       {strokeStyle: "rgba(255,0,0,0.75)", min: 450001, max: 900000},
+       {strokeStyle: "rgba(255,0,0,0.5)", min: 900001, max: 1350000},
+       {strokeStyle: "rgba(255,0,0,0.3)", min: 1350001, max: 1800000},
+
+
+
+
+       {strokeStyle: "rgba(10,207,151,0.05)", min: 1800001, max: 1845000},
+       {strokeStyle: "rgba(10,207,151,0.1)", min: 1845001, max: 1890000},
+       {strokeStyle: "rgba(10,207,151,0.15)", min: 1890001, max: 2340000}, 
+       {strokeStyle: "rgba(10,207,151,0.20)", min: 2340001, max: 2790000},
+       {strokeStyle: "rgba(10,207,151,0.25)", min: 2790001, max: 3240000},
+       {strokeStyle: "rgba(10,207,151,0.3)", min: 3240001, max: 3690000}, 
+       {strokeStyle: "rgba(10,207,151,0.35)", min: 3690001, max: 4140000},
+       {strokeStyle: "rgba(10,207,151,0.4)", min: 4140001, max: 4590000},
+       {strokeStyle: "rgba(10,207,151,0.45)", min: 4590001, max: 5040000}, 
+       {strokeStyle: "rgba(10,207,151,0.5)", min: 5040001, max: 5490000},
+       {strokeStyle: "rgba(10,207,151,0.55)", min: 5490001, max: 5940000},
+       {strokeStyle: "rgba(10,207,151,0.6)", min: 5940001, max: 6390000},
+       {strokeStyle: "rgba(10,207,151,0.65)", min: 6390001, max: 6840000},
+       {strokeStyle: "rgba(10,207,151,0.7)", min: 6840001, max: 7290000},
+       {strokeStyle: "rgba(10,207,151,0.72)", min: 7290001, max: 7740000}, 
+       {strokeStyle: "rgba(10,207,151,0.75)", min: 7740001, max: 8190000},
+       {strokeStyle: "rgba(10,207,151,0.82)", min: 8190001, max: 8640000},
+       {strokeStyle: "rgba(10,207,151,0.92)", min: 8640001, max: 9090000},
+       {strokeStyle: "rgba(10,207,151,1)", min: 9090001, max: 10000000} 
+                
+    ]
+};
+gauge.setOptions(opts);
+gauge.maxValue = 10000000;
+gauge.animationSpeed = 10;
+gauge.set(result[0].othergauge);
+  })
+
+
+    </script>
+
+     <script>
+   fetch("http://127.0.0.1:3000/gauge/generic")
+   .then(res => res.json())
+   .then(function(result){
+        console.log(result[0].genericgauge);
+       
+        var cont = $('#canvas2');
+var gauge = new Gauge(cont.get(0));
+var opts = {
+    angle: 0,
+    lineWidth: 0.25,
+    radiusScale: 1,
+    pointer: {
+      length: 0.50,
+      strokeWidth: 0.02,
+      color: 'rgba(108,117,125,1)'
+    },
+    staticLabels:{
+      font:"20px  sans-serif",
+      labels:[0,1800000,10000000],
+      fractionDigits:0
+    },
+    staticZones: [
+       {strokeStyle: "rgba(10,207,151,75)", min: 0, max: 450000},
+       {strokeStyle: "rgba(10,207,151,0.82)", min: 450001, max: 900000},
+       {strokeStyle: "rgba(10,207,151,0.92)", min: 900001, max: 1350000},
+       {strokeStyle: "rgba(10,207,151,1)", min: 1350001, max: 1800000},
+
+
+
+
+       {strokeStyle: "rgba(10,207,151,0.75)", min: 1800001, max: 1845000},
+       {strokeStyle: "rgba(10,207,151,0.7)", min: 1845001, max: 1890000},
+       {strokeStyle: "rgba(10,207,151,0.65)", min: 1890001, max: 2340000}, 
+       {strokeStyle: "rgba(10,207,151,0.6)", min: 2340001, max: 2790000},
+       {strokeStyle: "rgba(10,207,151,0.55)", min: 2790001, max: 3240000},
+       {strokeStyle: "rgba(10,207,151,0.4)", min: 3240001, max: 3690000}, 
+       {strokeStyle: "rgba(10,207,151,0.45)", min: 3690001, max: 4140000},
+       {strokeStyle: "rgba(10,207,151,0.4)", min: 4140001, max: 4590000},
+       {strokeStyle: "rgba(10,207,151,0.35)", min: 4590001, max: 5040000}, 
+       {strokeStyle: "rgba(10,207,151,0.3)", min: 5040001, max: 5490000},
+       {strokeStyle: "rgba(10,207,151,0.25)", min: 5490001, max: 5940000},
+       {strokeStyle: "rgba(10,207,151,0.20)", min: 5940001, max: 6390000},
+       {strokeStyle: "rgba(10,207,151,0.15)", min: 6390001, max: 6840000},
+       {strokeStyle: "rgba(10,207,151,0.1)", min: 6840001, max: 7290000},
+       {strokeStyle: "rgba(10,207,151,0.08)", min: 7290001, max: 7740000}, 
+       {strokeStyle: "rgba(10,207,151,0.05)", min: 7740001, max: 8190000},
+       {strokeStyle: "rgba(255,0,0,0.35)", min: 8190001, max: 8640000},
+       {strokeStyle: "rgba(255,0,0,0.5)", min: 8640001, max: 9090000},
+       {strokeStyle: "rgba(255,0,0,0.65)", min: 9090001, max: 9135000},
+       {strokeStyle: "rgba(255,0,0,1)", min: 9135001, max: 10000000} 
+                
+    ]
+};
+gauge.setOptions(opts);
+gauge.maxValue = 10000000;
+gauge.animationSpeed = 10;
+gauge.set(result[0].genericgauge);
+  })
+
+
+    </script>
+</html>

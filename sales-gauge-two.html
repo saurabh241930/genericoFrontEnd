@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Hyper - Responsive Bootstrap 4 Admin Dashboard</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
+        <meta content="Coderthemes" name="author" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <!-- App favicon -->
+        <link rel="shortcut icon" href="assets/images/favicon.ico">
+
+        <!-- third party css -->
+        <link href="assets/css/vendor/fullcalendar.min.css" rel="stylesheet" type="text/css" />
+        <!-- third party css end -->
+
+        <!-- App css -->
+        <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+        <link href="assets/css/app.min.css" rel="stylesheet" type="text/css" />
+        <style>
+    div,canvas {
+  border: 1px solid white;
+ 
+  /*display: inline-block;*/
+}
+body {
+  background:white;
+}
+</style>
+
+    </head>
+
+    <body>
+
+        <!-- Begin page -->
+        <div class="wrapper">
+
+            <!-- ========== Left Sidebar Start ========== -->
+            <div class="left-side-menu">
+
+                <div class="slimscroll-menu">
+
+                    <!-- LOGO -->
+                    <a href="index.html" class="logo text-center">
+                        <span class="logo-lg">
+                            <img src="assets/images/logo.png" alt="" height="16">
+                        </span>
+                        <span class="logo-sm">
+                            <img src="assets/images/logo_sm.png" alt="" height="16">
+                        </span>
+                    </a>
+
+                    <!--- Sidemenu -->
+                    <ul class="metismenu side-nav">
+
+                        <li class="side-nav-title side-nav-item">Navigation</li>
+
+                        <li class="side-nav-item">
+                            <a href="index.html" class="side-nav-link">
+                                <i class="dripicons-meter"></i>
+                                <span class="badge badge-success float-right">7</span>
+                                <span> Dashboard </span>
+                            </a>
+                        </li>
+
+                        <li class="side-nav-item">
+                            <a href="javascript: void(0);" class="side-nav-link">
+                                <i class="dripicons-view-apps"></i>
+                                <span> Sales Panel </span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                            <ul class="side-nav-second-level" aria-expanded="false">
+                                <li>
+                                    <a href="sales-gauge.html">Gauge</a>
+                                </li>
+                                
+                                
+                            </ul>
+                        </li>
+            
+                        
+                            </ul>
+                        </li>
+
+                        
+
+                       
+
+                        
+
+                        
+
+                       
+
+                       
+            
+                    </ul>
+
+                    <!-- Help Box -->
+                    <!-- end Help Box -->
+                    <!-- End Sidebar -->
+
+
+                </div>
+                <!-- Sidebar -left -->
+
+            </div>
+            <!-- Left Sidebar End -->
+
+            <!-- ============================================================== -->
+            <!-- Start Page Content here -->
+            <!-- ============================================================== -->
+
+            <div class="content-page">
+                <div class="content">
+
+                    <!-- Topbar Start -->
+                    <div class="navbar-custom">
+                        <ul class="list-unstyled topbar-right-menu float-right mb-0">
+
+                            <li class="dropdown notification-list">
+                                <a class="nav-link dropdown-toggle arrow-none" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                                    <i class="dripicons-bell noti-icon"></i>
+                                    <span class="noti-icon-badge"></span>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated dropdown-lg">
+
+                                    <!-- item-->
+                                </div>
+                           
+                            </li>
+
+                            <li class="dropdown notification-list">
+                                <a class="nav-link dropdown-toggle nav-user arrow-none mr-0" data-toggle="dropdown" href="#" role="button" aria-haspopup="false"
+                                    aria-expanded="false">
+                                    <span class="account-user-avatar"> 
+                                        <img src="assets/images/users/avatar-1.jpg" alt="user-image" class="rounded-circle">
+                                    </span>
+                                    <span>
+                                        <span class="account-user-name">Sid</span>
+                                        <span class="account-position">Founder</span>
+                                    </span>
+                                </a>
+                            </li>
+
+                        </ul>
+                        <button class="button-menu-mobile open-left disable-btn">
+                            <i class="mdi mdi-menu"></i>
+                        </button>
+                    </div>
+                    <!-- end Topbar -->
+
+                    <!-- Start Content-->
+                    <div class="container-fluid">
+                        
+                        <!-- start page title -->
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="page-title-box">
+                                    <div class="page-title-right">
+                                        <ol class="breadcrumb m-0">
+                                            <li class="breadcrumb-item"><a href="javascript: void(0);">Hyper</a></li>
+                                            <li class="breadcrumb-item"><a href="javascript: void(0);">Sales</a></li>
+                                            <li class="breadcrumb-item active">Gauge</li>
+                                        </ol>
+                                    </div>
+                                    <h4 class="page-title">Sales Gauge</h4>
+                                </div>
+                            </div>
+                        </div>     
+                        <!-- end page title --> 
+
+                        <div class="row">
+                            <div class="col-12">
+                            <div class="panel">
+                                    <canvas id="canvas" width=800 height=400 > </canvas> 
+                                    <button class="btn btn-outline-info" id="generic">Sales</button>
+                                    <button class="btn btn-outline-info" id="ethical">Gereric %</button>
+                                    <button class = "btn btn-outline-info" id="other">Purchase</button>
+                                
+                            </div>
+                            
+
+                           <!-- end card body-->
+                            </div> <!-- end card -->
+
+                                <!-- Add New Event MODAL -->
+                               
+                                <!-- end modal-->
+
+                                <!-- Modal Add Category -->
+                               
+                                <!-- end modal-->
+                        </div>
+                            <!-- end col-12 -->
+                        </div> <!-- end row -->
+                        
+                    </div> <!-- container -->
+
+                </div> <!-- content -->
+
+                <!-- Footer Start -->
+                <footer class="footer">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-6">
+                                2018 © Hyper - Coderthemes.com
+                            </div>
+                            <div class="col-md-6">
+                                <div class="text-md-right footer-links d-none d-md-block">
+                                    <a href="javascript: void(0);">About</a>
+                                    <a href="javascript: void(0);">Support</a>
+                                    <a href="javascript: void(0);">Contact Us</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+                <!-- end Footer -->
+
+            </div>
+
+            <!-- ============================================================== -->
+            <!-- End Page content -->
+            <!-- ============================================================== -->
+
+
+        </div>
+        <!-- END wrapper -->
+
+
+        <!-- Right Sidebar -->
+       
+        <!-- /Right-bar -->
+
+
+        <!-- App js -->
+        <script src="assets/js/gauge.min.js"></script>
+        <script async src="gauge.min.js" onload="initGauge()"></script>
+        <script src="assets/js/app.min.js"></script>
+
+        <!-- third party js -->
+        <script src="assets/js/vendor/jquery-ui.min.js"></script>
+        <script src="assets/js/vendor/fullcalendar.min.js"></script>
+        <!-- third party js ends -->
+
+        <!-- demo app -->
+        <script src="assets/js/pages/demo.calendar.js"></script>
+        
+        <!-- end demo js-->
+
+    </body>
+    <script>
+        $("#generic").on("click",function () {
+   fetch("http://127.0.0.1:3000/gauge/generic")
+   .then(res => res.json())
+   .then(function(result){
+        console.log(result[0].genericgauge);
+       
+        var cont = $('#canvas');
+var gauge = new Gauge(cont.get(0));
+var opts = {
+    angle: 0.0,
+    lineWidth: 0.9,
+    radiusScale: 1,
+    pointer: {
+      length: 0.75,
+      strokeWidth: 0.04,
+      color: 'black'
+    },
+    staticLabels:{
+      font:"30px segoe ui",
+      labels:[0,2500000,5000000,7500000,10000000],
+      fractionDigits:0
+    },
+    staticZones: [
+       {strokeStyle: "rgba(256,0,0,0.9)", min: 0, max: 2000000}, 
+       {strokeStyle: "rgba(256,256,0,0.5)", min: 2000001, max:4000000}, 
+       {strokeStyle: "rgba(256,256,0,0.9)", min: 4000001, max: 6000000}, 
+       {strokeStyle: "rgba(0,128,0,0.5)", min: 6000001, max: 8000000},
+       {strokeStyle: "rgba(0,128,0,0.9)", min: 8000001, max: 10000000}          
+    ]
+};
+gauge.setOptions(opts);
+gauge.maxValue = 10000000;
+gauge.animationSpeed = 10;
+gauge.set(result[0].genericgauge);
+  })
+})
+
+$("#ethical").on("click",function () {
+   fetch("http://127.0.0.1:3000/gauge/ethical")
+   .then(res => res.json())
+   .then(function(result){
+        console.log(result[0].ethicalgauge);
+       
+        var cont = $('#canvas');
+var gauge = new Gauge(cont.get(0));
+var opts = {
+    angle: 0.0,
+    lineWidth: 0.9,
+    radiusScale: 1,
+    pointer: {
+      length: 0.75,
+      strokeWidth: 0.04,
+      color: 'black'
+    },
+    staticLabels:{
+      font:"30px segoe ui",
+      labels:[0,25,50,75,100],
+      fractionDigits:0
+    },
+    staticZones: [
+       {strokeStyle: "rgba(256,0,0,0.9)", min: 0, max: 20}, 
+       {strokeStyle: "rgba(256,256,0,0.5)", min: 21, max:40}, 
+       {strokeStyle: "rgba(256,256,0,0.9)", min: 41, max: 60}, 
+       {strokeStyle: "rgba(0,128,0,0.5)", min: 61, max: 80},
+       {strokeStyle: "rgba(0,128,0,0.9)", min: 81, max: 100}          
+    ]
+};
+gauge.setOptions(opts);
+gauge.maxValue = 100;
+gauge.animationSpeed = 10;
+gauge.set(result[0].ethicalgauge);
+  })
+})
+
+
+
+
+    
+
+$("#other").on("click",function () {
+   fetch("http://127.0.0.1:3000/gauge/other")
+   .then(res => res.json())
+   .then(function(result){
+        console.log(result[0].othergauge);
+       
+        var cont = $('#canvas');
+var gauge = new Gauge(cont.get(0));
+var opts = {
+    angle: 0.0,
+    lineWidth: 0.9,
+    radiusScale: 1,
+    pointer: {
+      length: 0.75,
+      strokeWidth: 0.04,
+      color: 'black'
+    },
+    staticLabels:{
+      font:"30px segoe ui",
+      labels:[0,2500000,5000000,7500000,10000000],
+      fractionDigits:0
+    },
+    staticZones: [
+       {strokeStyle: "rgba(256,0,0,0.9)", min: 0, max: 2000000}, 
+       {strokeStyle: "rgba(256,256,0,0.5)", min: 2000001, max:4000000}, 
+       {strokeStyle: "rgba(256,256,0,0.9)", min: 4000001, max: 6000000}, 
+       {strokeStyle: "rgba(0,128,0,0.5)", min: 6000001, max: 8000000},
+       {strokeStyle: "rgba(0,128,0,0.9)", min: 8000001, max: 10000000}          
+    ]
+};
+gauge.setOptions(opts);
+gauge.maxValue = 10000000;
+gauge.animationSpeed = 10;
+gauge.set(result[0].othergauge);
+  })
+})
+
+
+    </script>
+</html>
