@@ -40,7 +40,28 @@
     <script>
 
 
-        fetch("http://localhost:3000/panelOne/2018-11-01/2018-11-02")
+var today = new Date();
+
+var dd = today.getDate();
+var mm = today.getMonth()+1; 
+var yyyy = today.getFullYear();
+if(dd<10) {
+    dd = '0'+dd
+} 
+if(mm<10) {
+    mm = '0'+mm
+} 
+todayDate =  yyyy + '-' + mm + '-' + dd;
+var parts = todayDate.split("-")
+var startDateParts = [parts[0],parts[1],'01']
+var startDate = startDateParts.join("-")
+var totalDaysUntilNow = parseInt(parts[2]);
+
+
+
+
+
+        fetch("http://localhost:3000/panelOne/"+startDate+"/"+todayDate)
         .then(res => res.json())
         .then(function(result){
             console.log(result[0]);
@@ -121,6 +142,32 @@
             $("#totalOtherPurchaseBox").addClass("card text-white bg-info")
             $("#TotalOtherPurchaseTextbox").css("color","white")
             $("#totalOtherPurchaseBox").css("transition","all 0.8s ease")
+
+
+            $("#TotalGrossMarginText").text(parseInt((parseInt(result[0].totalGrossMargins)/totalDaysUntilNow)))
+            $("#TotalGrossMarginTextbox").text(" Average Gross Margin")
+            $("#totalGrossMarginBox").addClass("card text-white bg-info")
+            $("#TotalGrossMarginTextbox").css("color","white")
+            $("#totalGrossMarginBox").css("transition","all 0.8s ease")
+
+            $("#TotalEthicalGrossMarginText").text(parseInt((parseInt(result[0].totalGrossMargins)/totalDaysUntilNow)))
+            $("#TotalEthicalGrossMarginTextbox").text(" Average Generic Gross Margin")
+            $("#totalEthicalGrossMarginBox").addClass("card text-white bg-info")
+            $("#TotalEthicalGrossMarginTextbox").css("color","white")
+            $("#totalEthicalGrossMarginBox").css("transition","all 0.8s ease")
+
+            $("#TotalGenericGrossMarginText").text(parseInt((parseInt(0.6*result[0].totalGrossMargins)/totalDaysUntilNow)))
+            $("#TotalGenericGrossMarginTextbox").text(" Average Generic Gross Margin")
+            $("#totalGenericGrossMarginBox").addClass("card text-white bg-info")
+            $("#TotalGenericGrossMarginTextbox").css("color","white")
+            $("#totalGenericGrossMarginBox").css("transition","all 0.8s ease")
+
+            $("#TotalOtherGrossMarginText").text(parseInt((parseInt(0.4*result[0].totalGrossMargins)/totalDaysUntilNow)))
+            $("#TotalOtherGrossMarginTextbox").text(" Average Other Gross Margin")
+            $("#totalOtherGrossMarginBox").addClass("card text-white bg-info")
+            $("#TotalOtherGrossMarginTextbox").css("color","white")
+            $("#totalOtherGrossMarginBox").css("transition","all 0.8s ease")
+
         
             bool = false;
             
@@ -150,14 +197,14 @@
             $("#totalEthicalSalesBox").css("transition","all 0.8s ease")
 
             $("#TotalGenericSalesText").text(parseInt(result[0].totalGenericSales))
-            $("#TotalGenericTextbox").text(" Total Generic Sales")
+            $("#TotalGenericSalesTextbox").text(" Total Generic Sales")
             $("#totalGenericSalesBox").removeClass("card text-white bg-info")
             $("#totalGenericSalesBox").addClass("card widget-flat")
             $("#TotalGenericTextbox").css("color","black")
             $("#totalGenericSalesBox").css("transition","all 0.8s ease")
 
             $("#TotalOtherSalesText").text(parseInt(result[0].otherSales))
-            $("#TotalOtherTextbox").text(" Total Other Sales")
+            $("#TotalOtherSalesTextbox").text(" Total Other Sales")
             $("#totalOtherSalesBox").removeClass("card text-white bg-info")
             $("#totalOtherSalesBox").addClass("card widget-flat")
             $("#TotalOtherTextbox").css("color","black")
@@ -185,6 +232,37 @@
             $("#totalOtherPurchaseBox").addClass("card widget-flat")
             $("#TotalOtherPurchaseTextbox").css("color","black")
             $("#totalOtherPurchaseBox").css("transition","all 0.8s ease")
+             
+            $("#TotalGrossMarginText").text(parseInt(result[0].totalGrossMargins))
+            $("#TotalGrossMarginTextbox").text(" Total Gross Margin")
+            $("#totalGrossMarginBox").removeClass("card text-white bg-info")
+            $("#totalGrossMarginBox").addClass("card widget-flat")
+            $("#TotalGrossMarginTextbox").css("color","black")
+            $("#totalGrossMarginBox").css("transition","all 0.8s ease")
+
+
+            $("#TotalEthicalGrossMarginText").text(parseInt(result[0].totalGrossMargins))
+            $("#TotalEthicalGrossMarginTextbox").text(" Total Ethical Gross Margin")
+            $("#totalEthicalGrossMarginBox").removeClass("card text-white bg-info")
+            $("#totalEthicalGrossMarginBox").addClass("card widget-flat")
+            $("#TotalEthicalGrossMarginTextbox").css("color","black")
+            $("#totalEthicalGrossMarginBox").css("transition","all 0.8s ease")
+
+             $("#TotalGenericGrossMarginText").text(parseInt(0.6*result[0].totalGrossMargins))
+            $("#TotalGenericGrossMarginTextbox").text(" Total Generic Gross Margin")
+            $("#totalGenericGrossMarginBox").removeClass("card text-white bg-info")
+            $("#totalGenericGrossMarginBox").addClass("card widget-flat")
+            $("#TotalGenericGrossMarginTextbox").css("color","black")
+            $("#totalGenericGrossMarginBox").css("transition","all 0.8s ease")
+
+            $("#TotalOtherGrossMarginText").text(parseInt(0.4*result[0].totalGrossMargins))
+            $("#TotalOtherGrossMarginTextbox").text(" Total Other Gross Margin")
+            $("#totalOtherGrossMarginBox").removeClass("card text-white bg-info")
+            $("#totalOtherGrossMarginBox").addClass("card widget-flat")
+            $("#TotalOtherGrossMarginTextbox").css("color","black")
+            $("#totalOtherGrossMarginBox").css("transition","all 0.8s ease")
+
+            
 
             bool = true;
             }
@@ -359,19 +437,19 @@
                             </a>
                             <ul class="side-nav-second-level" aria-expanded="false">
                                 <li>
-                                    <a href="panel-one.html">panel One</a>
+                                    <a href="panel-one.html">NI(P1)</a>
                                     <!-- <a href="sales-gauge-two.html">Gauge 11</a> -->
                                 </li>
                             </ul>
                             <ul class="side-nav-second-level" aria-expanded="false">
                                 <li>
-                                    <a href="panel-two.html">Panel Two</a>
+                                    <a href="NI(P2).html">NI(P2)</a>
                                     <!-- <a href="sales-gauge-two.html">Gauge 11</a> -->
                                 </li>
                             </ul>
                             <ul class="side-nav-second-level" aria-expanded="false">
                                 <li>
-                                    <a href="panel-three.html">Panel Three</a>
+                                    <a href="panel-two.html">NI(P3)</a>
                                     <!-- <a href="sales-gauge-two.html">Gauge 11</a> -->
                                 </li>
                             </ul>
@@ -426,14 +504,14 @@
 
 
 
- <div class="row">
+ <div class="row" style="margin-top:10px">
      
 
                                 
                             
-<div class="col col-lg-3">
+<div class="col col-lg-3" >
      <!--Total Sales Text Box-->
-     <div id="totalSalesBox" class="card widget-flat">
+     <div id="totalSalesBox" class="card widget-flat" style="height:200px">
             <div class="card-body">
                 <div class="float-right">
                     <i class="mdi mdi-account-multiple widget-icon"></i>
@@ -452,7 +530,7 @@
                                                          
               <div class="col col-lg-3">
                        <!-- Total Purchase TextBox-->
-                       <div id="totalEthicalSalesBox" class="card widget-flat">
+                       <div id="totalEthicalSalesBox" class="card widget-flat" style="height:200px">
                             <div class="card-body">
                                 <div class="float-right">
                                     <!-- <i class="mdi mdi-cart-plus widget-icon"></i> -->
@@ -469,7 +547,7 @@
                 
                 <div class="col col-lg-3">
                     <!-- Total Purchase TextBox-->
-                    <div id="totalGenericSalesBox" class="card widget-flat">
+                    <div id="totalGenericSalesBox" class="card widget-flat" style="height:200px">
                          <div class="card-body">
                              <div class="float-right">
                                  <!-- <i class="mdi mdi-cart-plus widget-icon"></i> -->
@@ -489,7 +567,7 @@
                                     
                                     
                                     <div class="col col-lg-3">
-                                            <div id="totalOtherSalesBox" class="card widget-flat">
+                                            <div id="totalOtherSalesBox" class="card widget-flat" style="height:200px">
                                            <!--Generic Percentage TextBox -->
                                   
                                             <div class="card-body">
@@ -507,7 +585,7 @@
                                    
                                     <div class="col col-lg-3">
                                         <!-- Total Purchase TextBox-->
-                                        <div id="totalPurchaseBox" class="card widget-flat">
+                                        <div id="totalPurchaseBox" class="card widget-flat" style="height:200px">
                                              <div class="card-body">
                                                  <div class="">
                                                      <!-- <i class="mdi mdi-cart-plus widget-icon"></i> -->
@@ -528,7 +606,7 @@
                  
                  
                                               <div class="col col-lg-3">
-                                                    <div id="totalEthicalPurchaseBox" class="card widget-flat">
+                                                    <div id="totalEthicalPurchaseBox" class="card widget-flat" style="height:200px">
                                                 
                                                      <div class="card-body">
                                                          <div class="float-right">
@@ -545,7 +623,7 @@
                                                      
                                                      
                                                      <div class="col col-lg-3">
-                                                            <div id="totalGenericPurchaseBox" class="card widget-flat">
+                                                            <div id="totalGenericPurchaseBox" class="card widget-flat" style="height:200px">
                                                             <!--Generic Percentage TextBox -->
                                                       
                                                              <div class="card-body">
@@ -564,7 +642,7 @@
 
                                                      
                                     <div class="col col-lg-3">
-                                            <div id="totalOtherPurchaseBox" class="card widget-flat">
+                                            <div id="totalOtherPurchaseBox" class="card widget-flat" style="height:200px">
                                         <!--Generic Percentage TextBox -->
                                      
                                          <div class="card-body">
@@ -581,12 +659,12 @@
                                 
                                  <div class="col col-lg-3">
                                      <!-- Total Purchase TextBox-->
-                                     <div id="totalGrossMarginBox" class="card widget-flat">
+                                     <div id="totalGrossMarginBox" class="card widget-flat" style="height:200px">
                                           <div class="card-body">
                                               <div class="">
                                                   <!-- <i class="mdi mdi-cart-plus widget-icon"></i> -->
                                               </div>
-                                          <h5 id="TotalGrossMarginTextbox" class="text-muted font-weight-normal mt-0" >Total Gross Margin</h5>
+                                          <h5 id="TotalGrossMarginTextbox" class="text font-weight-normal mt-0" >Total Gross Margin</h5>
               
                                               <h3 id="TotalGrossMarginText" class="mt-3 mb-3"></h3>
                                                <!-- <span class="text-danger mr-2">
@@ -602,13 +680,13 @@
               
               
                                            <div class="col col-lg-3">
-                                                <div id="totalEthicalMarginBox" class="card widget-flat">
+                                                <div id="totalEthicalGrossMarginBox" class="card widget-flat" style="height:200px">
                                               
                                                   <div class="card-body">
                                                       <div class="float-right">
                                                           <!-- <i class="mdi mdi-currency-usd widget-icon"></i> -->
                                                       </div>
-                                                      <h5 id="text2" class="text-muted font-weight-normal mt-0" title="genericsales">Total Ethical Gross Margin</h5>
+                                                      <h5 id="TotalEthicalGrossMarginTextbox" class="text font-weight-normal mt-0" title="genericsales">Total Ethical Gross Margin</h5>
                                                       <h3 id="TotalEthicalGrossMarginText" class="mt-3 mb-3"></h3>
                                                    
                                                   </div>
@@ -618,14 +696,14 @@
                                                   
                                                   
                                                   <div class="col col-lg-3">
-                                                        <div id="totalGenericMarginBox" class="card widget-flat">
+                                                        <div id="totalGenericGrossMarginBox" class="card widget-flat" style="height:200px">
                                                          <!--Generic Percentage TextBox -->
                                                     
                                                           <div class="card-body">
                                                               <div class="float-right">
                                                                   <!-- <i class="mdi mdi-pulse widget-icon"></i> -->
                                                               </div>
-                                                              <h5 class="text-muted font-weight-normal mt-0" title="Growth">Total Generic Gross Margin</h5>
+                                                              <h5 class="text font-weight-normal mt-0" id="TotalGenericGrossMarginTextbox">Total Generic Gross Margin</h5>
                                                               <h3 id="TotalGenericGrossMarginText" class="mt-3 mb-3"></h3>
                                                              
                                                           </div>
@@ -633,14 +711,14 @@
                                                   </div>
 
                                                   <div class="col col-lg-3">
-                                                        <div id="totalOtherMarginBox" class="card widget-flat">
+                                                        <div id="totalOtherGrossMarginBox" class="card widget-flat" style="height:200px">
                                                     <!--Generic Percentage TextBox -->
                                                 
                                                      <div class="card-body">
                                                          <div class="float-right">
                                                              <!-- <i class="mdi mdi-pulse widget-icon"></i> -->
                                                          </div>
-                                                         <h5 class="text-muted font-weight-normal mt-0" title="Growth">Total Other Gross Margin</h5>
+                                                         <h5 id="TotalOtherGrossMarginTextbox" class="text font-weight-normal mt-0">Total Other Gross Margin</h5>
                                                          <h3 id="TotalOtherGrossMarginText" class="mt-3 mb-3"></h3>
                                                         </div>  
                                                      </div>
