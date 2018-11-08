@@ -39,185 +39,23 @@
 
     <script>
 
+      
+var firstCycle = true;
 
-        fetch("http://localhost:3000/panelOne/2018-11-01/2018-11-02")
+setInterval(function () {
+    
+    fetch("http://localhost:3000/panelTwo")
         .then(res => res.json())
         .then(function(result){
-            console.log(result[0]);
-        
-        var ethicalPercentage = (result[0].totalEthicalSales * 100)/(result[0].totalSales)
-        var genericalPercentage = (result[0].totalGenericSales * 100)/(result[0].totalSales)
-        
-        
-        
-        
-        $("#TotalEthicalGrossMarginText").text(parseInt(result[0].totalGrossMargins))
-        $("#TotalGrossMarginText").text(parseInt(2*result[0].totalGrossMargins))
-        $("#TotalGenericGrossMarginText").text(parseInt(0.6*result[0].totalGrossMargins))
-        $("#TotalOtherGrossMarginText").text(parseInt(0.4*result[0].totalGrossMargins))
-        $("#TotalOtherPurchaseText").text(parseInt(result[0].totalOtherPurchase))
-        $("#TotalEthicalPurchaseText").text(parseInt(result[0].totalEthicalPurchase))
-        $("#TotalGenericPurchaseText").text(parseInt(result[0].totalGenericPurchase))
-        $("#TotalEthicalSalesText").text(parseInt(result[0].totalEthicalSales))
-        $("#TotalGenericSalesText").text(parseInt(result[0].totalGenericSales))
-        $("#TotalOtherSalesText").text(parseInt(result[0].otherSales))
-         $("#TotalSalesText").text(parseInt(result[0].totalSales))
-         $("#TotalPurchaseText").text(parseInt(result[0].totalPurchase))
-         $("#ethicalPercentage").text(Number.parseFloat(ethicalPercentage).toFixed(2))
-         $("#genericalPercentage").text(Number.parseFloat(genericalPercentage).toFixed(2))
-        
-        var bool = true;
-        
-        
-        setInterval(function(){
-            if(bool){
-                
-            $("#TotalSalesText").text(parseInt(result[0].averageSales))
-            $("#TotalSalesTextbox").text(" Average Sales")
-            $("#totalSalesBox").addClass("card text-white bg-info")
-            $("#TotalSalesTextbox").css("color","white")
-            $("#totalSalesBox").css("transition","all 0.8s ease")
-        
-            $("#TotalPurchaseText").text(parseInt(result[0].averagePurchase))
-            $("#TotalPurchaseTextbox").text(" Average Purchase")
-            $("#totalPurchaseBox").addClass("card text-white bg-info")
-            $("#TotalPurchaseTextbox").css("color","white")
-            $("#totalPurchaseBox").css("transition","all 0.8s ease")
-        
-             $("#TotalEthicalSalesText").text(parseInt(result[0].averageEthicalSales))
-            $("#TotalEthicalSalesTextbox").text(" Average Ethical Purchase")
-            $("#totalEthicalSalesBox").addClass("card text-white bg-info")
-            $("#TotalEthicalSalesTextbox").css("color","white")
-            $("#totalEthicalSalesBox").css("transition","all 0.8s ease")
+            if(firstCycle){
+                result = result.slice(0,4)
 
-            $("#TotalGenericSalesText").text(parseInt(result[0].averageGenericSales))
-            $("#TotalGenericSalesTextbox").text(" Average Generic Purchase")
-            $("#totalGenericSalesBox").addClass("card text-white bg-info")
-            $("#TotaGenericTextbox").css("color","white")
-            $("#totalGenericSalesBox").css("transition","all 0.8s ease")
-
-            $("#TotalOtherSalesText").text(parseInt(result[0].averageOtherPurchase))
-            $("#TotalOtherSalesTextbox").text(" Average Other Purchase")
-            $("#totalOtherSalesBox").addClass("card text-white bg-info")
-            $("#TotaOtherSalesTextbox").css("color","white")
-            $("#totalOtherSalesBox").css("transition","all 0.8s ease")
-
-
-            $("#TotalEthicalPurchaseText").text(parseInt(result[0].averageEthicalPurchase))
-            $("#TotalEthicalPurchaseTextbox").text(" Average Ethical Purchase")
-            $("#totalEthicalPurchaseBox").addClass("card text-white bg-info")
-            $("#TotalEthicalPurchaseTextbox").css("color","white")
-            $("#totalEthicalPurchaseBox").css("transition","all 0.8s ease")
-
-            
-            $("#TotalGenericPurchaseText").text(parseInt(result[0].averageGenericPurchase))
-            $("#TotalGenericPurchaseTextbox").text(" Average Generic Purchase")
-            $("#totalGenericPurchaseBox").addClass("card text-white bg-info")
-            $("#TotalGenericPurchaseTextbox").css("color","white")
-            $("#totalGenericPurchaseBox").css("transition","all 0.8s ease")
-
-            $("#TotalOtherPurchaseText").text(parseInt(result[0].averageOtherPurchase))
-            $("#TotalOtherPurchaseTextbox").text(" Average Other Purchase")
-            $("#totalOtherPurchaseBox").addClass("card text-white bg-info")
-            $("#TotalOtherPurchaseTextbox").css("color","white")
-            $("#totalOtherPurchaseBox").css("transition","all 0.8s ease")
-        
-            bool = false;
-            
-            }
-        
-        
-            else{
-            $("#TotalSalesText").text(parseInt(result[0].totalSales))
-            $("#TotalSalesTextbox").text(" Total Sales")
-            $("#totalSalesBox").removeClass("card text-white bg-info")
-            $("#totalSalesBox").addClass("card widget-flat")
-            $("#TotalSalesTextbox").css("color","#6C757D")
-            $("#totalSalesBox").css("transition","all 0.8s ease")
-        
-            $("#TotalPurchaseText").text(parseInt(result[0].totalPurchase))
-            $("#TotalPurchaseTextbox").text(" Total Purchase")
-            $("#totalPurchaseBox").removeClass("card text-white bg-info")
-            $("#totalPurchaseBox").addClass("card widget-flat")
-            $("#TotalPurchaseTextbox").css("color","black")
-            $("#totalPurchaseBox").css("transition","all 0.8s ease")
-        
-            $("#TotalEthicalSalesText").text(parseInt(result[0].totalEthicalSales))
-            $("#TotalEthicalSalesTextbox").text(" Total Ethical Sales")
-            $("#totalEthicalSalesBox").removeClass("card text-white bg-info")
-            $("#totalEthicalSalesBox").addClass("card widget-flat")
-            $("#TotalEthicalSalesTextbox").css("color","black")
-            $("#totalEthicalSalesBox").css("transition","all 0.8s ease")
-
-            $("#TotalGenericSalesText").text(parseInt(result[0].totalGenericSales))
-            $("#TotalGenericTextbox").text(" Total Generic Sales")
-            $("#totalGenericSalesBox").removeClass("card text-white bg-info")
-            $("#totalGenericSalesBox").addClass("card widget-flat")
-            $("#TotalGenericTextbox").css("color","black")
-            $("#totalGenericSalesBox").css("transition","all 0.8s ease")
-
-            $("#TotalOtherSalesText").text(parseInt(result[0].otherSales))
-            $("#TotalOtherTextbox").text(" Total Other Sales")
-            $("#totalOtherSalesBox").removeClass("card text-white bg-info")
-            $("#totalOtherSalesBox").addClass("card widget-flat")
-            $("#TotalOtherTextbox").css("color","black")
-            $("#totalOtherSalesBox").css("transition","all 0.8s ease")
-
-
-            $("#TotalEthicalPurchaseText").text(parseInt(result[0].totalEthicalPurchase))
-            $("#TotalEthicalPurchaseTextbox").text(" Total Ethical Purchase")
-            $("#totalEthicalPurchaseBox").removeClass("card text-white bg-info")
-            $("#totalEthicalPurchaseBox").addClass("card widget-flat")
-            $("#TotalEthicalPurchaseTextbox").css("color","black")
-            $("#totalEthicalPurchaseBox").css("transition","all 0.8s ease")
-
-
-            $("#TotalGenericPurchaseText").text(parseInt(result[0].totalGenericPurchase))
-            $("#TotalGenericPurchaseTextbox").text(" Total Generic Purchase")
-            $("#totalGenericPurchaseBox").removeClass("card text-white bg-info")
-            $("#totalGenericPurchaseBox").addClass("card widget-flat")
-            $("#TotalGenericPurchaseTextbox").css("color","black")
-            $("#totalGenericPurchaseBox").css("transition","all 0.8s ease")
-
-            $("#TotalOtherPurchaseText").text(parseInt(result[0].totalOtherPurchase))
-            $("#TotalOtherPurchaseTextbox").text(" Total Other Purchase")
-            $("#totalOtherPurchaseBox").removeClass("card text-white bg-info")
-            $("#totalOtherPurchaseBox").addClass("card widget-flat")
-            $("#TotalOtherPurchaseTextbox").css("color","black")
-            $("#totalOtherPurchaseBox").css("transition","all 0.8s ease")
-
-            bool = true;
-            }
-        },2000)
-        
-        
-        
-        function flip() {
-            
-        }
-        
-        
-        
-     
-        
-            
-        })
-        
-        
-        
-        
-        
-        
-        fetch("http://localhost:3000/panelTwo")
-        .then(res => res.json())
-        .then(function(result){
-        console.log(result[0]);
                 var shortageArray = []
-                var exceededArray = [];
-                var shortageArray = [];
-                var genericSalesArray = [];
-                var ethicalSalesArray = [];
-                var totalSalesArray = [];
+var exceededArray = [];
+var shortageArray = [];
+var genericSalesArray = [];
+var ethicalSalesArray = [];
+var totalSalesArray = [];
         
         for (let i = 0; i < result.length; i++) {
         
@@ -294,7 +132,7 @@
                     {name:"Shortage target By",data:shortageArray}
                  
                     ],
-                    xaxis:{categories:["Month To Date"]},
+                    xaxis:{categories:["Shortage By Target"]},
                     colors:["#39afd1","#0acf97","#03eee3","#e3eaef"],
                     fill:{opacity:1},grid:{row:{colors:["transparent","transparent"],opacity:.2},borderColor:"#f1f3fa"},
                 }
@@ -305,18 +143,124 @@
                 );
                 
                 chart.render();
+
+                firstCycle = false;
+
+            }else{
+                result = result.slice(4,8)
+
+var exceededArray = [];
+var shortageArray = [];
+var genericSalesArray = [];
+var ethicalSalesArray = [];
+var totalSalesArray = [];
+        
+        for (let i = 0; i < result.length; i++) {
+        
+        ethicalSalesArray.push(result[i].totalEthicalSales)
+        
+        }
         
         
-                $("button.btn.btn-outline-info.btn-rounded").on("click",function(e){
-                    alert($(this).attr("id"))
-                })
+        for (let i = 0; i < result.length; i++) {
+        
+        genericSalesArray.push(result[i].totalGenericSales)
+        
+        }
+        for (let i = 0; i < result.length; i++) {
+        
+        totalSalesArray.push(result[i].totalSales)
+        
+        }
+        var totalSales = totalSalesArray.reduce((a, b) => a + b, 0);
+        var totalGenericSalesValue = genericSalesArray.reduce((a, b) => a + b, 0);
+        var totalGenericPercentage = ((totalGenericSalesValue)*100 / totalSales );
+        console.log(totalSales); // 6
+        document.getElementById('totalgenper').innerHTML = parseFloat(totalGenericPercentage).toFixed(0);
+        document.getElementById('second').innerHTML = parseFloat(totalSales).toFixed(0);
+        
+          for (let i = 0; i < result.length; i++) {
+          
+          if((1500000 - (result[i].totalEthicalSales + result[i].totalGenericSales)) > 0  ){
+              
+              
+              var valueToPush = 1500000 - (result[i].totalEthicalSales + result[i].totalGenericSales)
+              console.log(valueToPush);
+              shortageArray.push(valueToPush)
+              exceededArray.push(-1)
+        
+           }else{
+             var valueToPush = 1500000 - (result[i].totalEthicalSales + result[i].totalGenericSales)
+             console.log(valueToPush);
+             exceededArray.push(Math.abs(valueToPush))
+             shortageArray.push(-1)
+         }
+        }
+         
+         var options = {
+                    chart: {
+                        height: 700,
+                        width:900,
+                        type: 'bar',
+                        stacked:!0,
+                        stackType:"100%",
+                        toolbar: {
+                            show: !0
+                        },
+                        zoom: {
+                            enabled: true
+                        }
+                    },
+                    responsive: [{
+                        breakpoint: 700,
+                        options: {
+                            legend: {
+                                position: 'bottom',
+                                offsetX: -10,
+                                offsetY: 0
+                            }
+                        }
+                    }],
+                    plotOptions:{bar:{horizontal:!1,columnWidth:"50%"}
+                    },
+                    series:[
+                    {name:"Generic",data:genericSalesArray},
+                    {name:"Ethical",data:ethicalSalesArray},
+                    {name:"Exceeded target By",data:exceededArray},
+                    {name:"Shortage target By",data:shortageArray}
+                 
+                    ],
+                    xaxis:{categories:["Shortage By Target"]},
+                    colors:["#39afd1","#0acf97","#03eee3","#e3eaef"],
+                    fill:{opacity:1},grid:{row:{colors:["transparent","transparent"],opacity:.2},borderColor:"#f1f3fa"},
+                }
+        
+               var chart = new ApexCharts(
+                    document.querySelector("#chart"),
+                    options
+                );
+                
+                chart.render();
+
+                firstCycle = true;
+              
+
+            }
+           
+
+        
+        
+                
                                                                         
         
-                                                                    })
+             })
         
+             
+           
+},5000)
         
-                                                                    
-                                                                </script>
+                                                                
+       </script>
 
     <body style="overflow-y: hidden;
     overflow-x: hidden;">

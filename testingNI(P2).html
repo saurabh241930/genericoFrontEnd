@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+  <title>JS Bin</title>
+</head>
+<script>
+
+</script>
+<body>
+     <div id="chart"></div>  
+</body>
+<script>
+
+
+var today = new Date();
+var dd = today.getDate();
+var mm = today.getMonth()+1; 
+var yyyy = today.getFullYear();
+if(dd<10) {
+    dd = '0'+dd
+} 
+if(mm<10) {
+    mm = '0'+mm
+} 
+todayDate =  yyyy + '-' + mm + '-' + dd;
+var parts = todayDate.split("-")
+var startDateParts = [parts[0],parts[1],'01']
+var startDate = startDateParts.join("-")
+var totalDaysUntilNow = parseInt(parts[2]);
+var step;
+
+if(totalDaysUntilNow < 14){
+    step = 1;
+}else if(13 < totalDaysUntilNow < 21){
+    step = 3;
+}else if(20 < totalDaysUntilNow < 31){
+    step = 7;
+}
+
+    var datesToFetch = [];
+    var day = 1;
+    for (let i = 0; i < parseInt((totalDaysUntilNow/step)); i++) {
+        (day < 10) ? (parsedDate = "0" + day) : (parsedDate = day)
+        dateToPush = [parts[0],parts[1],parsedDate].join('-')
+        datesToFetch.push(dateToPush)
+        day = day + step;
+    }
+    
+var datesArray = [];
+var salesAfterReturnsArray = [];
+var salesBeforeReturnsArray = [];
+const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun","Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+//Building datesn labels
+for (let i = 0; i < datesToFetch.length; i++) {
+    var d = new Date(datesToFetch[i])
+datesArray.push(monthNames[d.getMonth()] + " " + d.getDate())       
+}
+
+ for (let i = 0; i < datesToFetch.length; i++) {
+    fetch("http://localhost:3000/areaChart/"+datesToFetch[i]+"/"+datesToFetch[i]).then(response => response.json())
+  .then(data => {
+    salesAfterReturnsArray.push((parseInt(data.totalSalesAfterReturns)))
+    salesBeforeReturnsArray.push((parseInt(data.totalSalesBeforeReturns)))
+    
+  })  
+ }
+
+console.log(datesToFetch);
+console.log(datesArray);
+console.log(salesAfterReturnsArray);
+console.log(salesBeforeReturnsArray);
+
+
+     var options = {
+      chart: {
+        height: 550,
+        type: 'line',
+      },
+      stroke: {
+        curve: 'smooth'
+      },
+       
+      series: [{
+        name: 'SALES AFTER RETURNS',
+        type: 'area',
+        data: salesAfterReturnsArray
+      }, {
+        name: 'SALES BEFORE RETURNS',
+        type: 'line',
+        data: salesBeforeReturnsArray
+      }],
+      fill: {
+        type:'solid',
+        opacity: [0.35, 1],
+      },
+      labels:datesArray,
+      markers: {
+        size: 0
+      },
+      yaxis: [
+        {
+          title: {
+            text: 'Series A',
+          },
+        },
+        {
+          opposite: true,
+          title: {
+            text: 'Series B',
+          },
+        },
+      ],
+      tooltip: {
+        shared: true,
+        intersect: false,
+        y: {
+          formatter: function (y) {
+            if(typeof y !== "undefined") {
+              return  y.toFixed(0) + " points";
+            }
+            return y;
+            
+          }
+        }
+      }
+
+    }
+
+    var chart = new ApexCharts(
+      document.querySelector("#chart"),
+      options
+    );
+
+    setTimeout(function () {
+        chart.render();
+    },200)
+</script>
+</html>

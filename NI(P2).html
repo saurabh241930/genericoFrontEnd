@@ -184,8 +184,8 @@
                                        
 
 <script>
-      var today = new Date();
-
+ 
+var today = new Date();
 var dd = today.getDate();
 var mm = today.getMonth()+1; 
 var yyyy = today.getFullYear();
@@ -210,7 +210,6 @@ if(totalDaysUntilNow < 14){
     step = 7;
 }
 
-
     var datesToFetch = [];
     var day = 1;
     for (let i = 0; i < parseInt((totalDaysUntilNow/step)); i++) {
@@ -220,26 +219,35 @@ if(totalDaysUntilNow < 14){
         day = day + step;
     }
     
+var datesArray = [];
+var salesAfterReturnsArray = [];
+var salesBeforeReturnsArray = [];
+const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun","Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+
+for (let i = 0; i < datesToFetch.length; i++) {
+    var d = new Date(datesToFetch[i])
+datesArray.push(monthNames[d.getMonth()] + " " + d.getDate())       
+}
+
+
+async function fillData() {
+
+for (let i = 0; i < datesToFetch.length; i++) {
+    var response = await fetch("http://localhost:3000/areaChart/"+datesToFetch[i]+"/"+datesToFetch[i]);
+    var responseJson = await response.json();
+    salesAfterReturnsArray.push(responseJson.totalSalesAfterReturns)
+    salesBeforeReturnsArray.push(responseJson.totalSalesBeforeReturns)
+}
+
+}
+
+fillData()
+
 console.log(datesToFetch);
-
-fetch("http://localhost:3000/areaChart/2018-11-01/2018-11-01") .then(response => response.json())
-  .then(data => {
-    // Here's a list of repos!
-    console.log(data)
-  });
-
-// for (let i = 0; i < datesToFetch.length; i++) {
-//    fetch("http://localhost:3000/areaChart/"+datesToFetch[i]+"/" +datesToFetch[i+1]).then(response => response.json())
-//   .then(data => {
-//     // Here's a list of repos!
-//     console.log(data)
-    
-// }
-</script>
-
-<script>
-      
-
+console.log(datesArray);
+console.log(salesAfterReturnsArray);
+console.log(salesBeforeReturnsArray);
 
 
 
@@ -260,41 +268,9 @@ function respChart(selector, type, data, options) {
         }
     };
 
-    var draw2 = Chart.controllers.doughnut.prototype.draw;
-    Chart.controllers.doughnut = Chart.controllers.doughnut.extend({
-        draw: function () {
-            draw2.apply(this, arguments);
-            var ctx = this.chart.chart.ctx;
-            var _fill = ctx.fill;
-            ctx.fill = function () {
-                ctx.save();
-                ctx.shadowColor = 'rgba(0,0,0,0.03)';
-                ctx.shadowBlur = 4;
-                ctx.shadowOffsetX = 0;
-                ctx.shadowOffsetY = 3;
-                _fill.apply(this, arguments)
-                ctx.restore();
-            }
-        }
-    });
+    
 
-    var draw3 = Chart.controllers.bar.prototype.draw;
-    Chart.controllers.bar = Chart.controllers.bar.extend({
-        draw: function () {
-            draw3.apply(this, arguments);
-            var ctx = this.chart.chart.ctx;
-            var _fill = ctx.fill;
-            ctx.fill = function () {
-                ctx.save();
-                ctx.shadowColor = 'rgba(0,0,0,0.01)';
-                ctx.shadowBlur = 20;
-                ctx.shadowOffsetX = 4;
-                ctx.shadowOffsetY = 5;
-                _fill.apply(this, arguments)
-                ctx.restore();
-            }
-        }
-    });
+    
 
     // get selector by context
     var ctx = selector.get(0).getContext("2d");
@@ -328,30 +304,39 @@ function respChart(selector, type, data, options) {
         }
         return chart;
     };
+
+  
     // run function - render chart at first load
-    return generateChart();
+    setTimeout(function(){
+        return generateChart();
+    },1000)
+ 
 }
+
+
 
 // generate graph
 var lineChart = {
-    labels: ["Oct 1","Oct 7", "Oct 14", "Oct 21", "Oct 28", "Nov 5"],
+    labels: datesArray,
     datasets: [{
         label: "Sales after return",
         backgroundColor: 'rgba(114, 124, 245, 0.3)',
         borderColor: '#727cf5',
-        data: [45,32, 42, 42, 62, 52]
+        data: salesAfterReturnsArray
     }, {
         label: "Sales before return",
         fill: true,
         backgroundColor: 'transparent',
         borderColor: "#0acf97",
         borderDash: [5, 5],
-        data: [50,42, 58, 66, 93, 82]
+        data: salesBeforeReturnsArray,
+        
     }]
 };
 
 var lineOpts = {
     maintainAspectRatio: false,
+    animation: false,
     legend: {
         display: false
     },
@@ -375,7 +360,7 @@ var lineOpts = {
         }],
         yAxes: [{
             ticks: {
-                stepSize: 20
+                stepSize: 100000
             },
             display: true,
             borderDash: [5, 5],
@@ -389,8 +374,6 @@ var lineOpts = {
 
 respChart($("#line-chart-example"), 'Line', lineChart, lineOpts);
 
-// similarily you can create bar chart
-respChart($("#bar-chart-example"), 'Bar', barChart, barOpts);
 
 </script>
 
